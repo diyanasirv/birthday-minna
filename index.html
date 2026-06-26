@@ -44,8 +44,8 @@
             max-width: 100%;
         }
 
-        ::-webkit-scrollbar{
-            display:none;
+        ::-webkit-scrollbar {
+            display: none;
         }
 
         /* Accurate interactive canvas night sky layer */
@@ -59,7 +59,7 @@
             pointer-events: none;
         }
 
-        
+
         section {
             min-height: 100vh;
             width: 100%;
@@ -123,7 +123,7 @@
 
         .hero-subtitle {
             font-style: italic;
-            font-size: clamp(2.25rem, 5vw, 1.6rem);
+            font-size: clamp(1.25rem, 5vw, 1.6rem);
             color: var(--text-muted);
             font-weight: 300;
         }
@@ -142,6 +142,34 @@
             height: 40px;
             background: linear-gradient(to bottom, var(--text-muted), transparent);
             margin: 10px auto 0;
+        }
+
+        .hero-section {
+            min-height: 72vh;
+            padding-bottom: 46px;
+        }
+
+        .hero-section .scroll-prompt {
+            bottom: 12px;
+        }
+
+        /* === TIGHT SPACING FIX (Scroll → Countdown → Memories) === */
+
+        .hero-section {
+            min-height: 100vh;
+            padding-bottom: 20px;
+        }
+
+        .countdown-section {
+            margin-top: -40px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .chapter-one-section {
+            margin-top: -30px;
+            padding-top: 10px;
+            padding-bottom: 40px;
         }
 
         /* --- Countdown --- */
@@ -364,6 +392,9 @@
 
         /* --- NEW SESSION: Chapter 3 - Polaroid Memory Strip --- */
         .memory-polaroid-section {
+            min-height: auto;
+            padding-top: 56px;
+            padding-bottom: 56px;
             overflow: hidden;
         }
 
@@ -375,11 +406,11 @@
 
         .strip-wrapper {
             width: 100%;
-            max-width: 1400px;
+            max-width: 960px;
             position: relative;
             margin: 0 auto;
             overflow: visible;
-            padding: 58px 0 72px;
+            padding: 28px 0 30px;
         }
 
         .strip-aligner {
@@ -389,22 +420,19 @@
         }
 
         .strip-container {
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            gap: clamp(12px, 2vw, 24px);
-            padding: 0 24px;
-            width: 100%;
-            max-width: 1280px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .strip-card {
             position: relative;
-            flex: 0 1 clamp(130px, 13vw, 185px);
+            width: 100%;
             background: #f3eee5;
             border-radius: 6px;
-            padding: 10px 10px 42px;
+            padding: 8px 8px 32px;
             color: #2c2828;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.52);
             text-align: center;
@@ -435,6 +463,14 @@
             transform: rotate(2deg) translateY(-12px);
         }
 
+        .strip-card:nth-child(7) {
+            transform: rotate(-2deg);
+        }
+
+        .strip-card:nth-child(8) {
+            transform: rotate(3deg) translateY(-8px);
+        }
+
         .strip-img {
             width: 100%;
             aspect-ratio: 4/5;
@@ -452,7 +488,7 @@
             bottom: 12px;
             font-family: 'Sacramento', cursive;
             font-style: normal;
-            font-size: 1.35rem;
+            font-size: 1.12rem;
             line-height: 1;
             color: #3a3331;
         }
@@ -693,6 +729,21 @@
                 padding-bottom: 80px;
             }
 
+            .hero-section {
+                min-height: 70vh;
+                padding-bottom: 44px;
+            }
+
+            .countdown-section {
+                padding-top: 22px;
+                padding-bottom: 22px;
+            }
+
+            .chapter-one-section {
+                padding-top: 24px;
+                padding-bottom: 62px;
+            }
+
             .reasons-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -723,20 +774,37 @@
                 gap: 36px;
             }
 
-            .strip-container {
-                gap: 12px;
-                padding: 0 16px;
-            }
+
 
             .strip-card {
-                flex-basis: clamp(82px, calc((100vw - 96px) / 6), 130px);
-                padding: 8px 8px 34px;
+                padding: 7px 7px 30px;
             }
         }
 
         @media (max-width: 600px) {
             section {
                 padding: 64px 18px;
+            }
+
+            .hero-section {
+                min-height: 100vh;
+                padding-bottom: 10px;
+            }
+
+            .scroll-prompt {
+                bottom: 8px;
+                font-size: 0.65rem;
+            }
+
+
+            .countdown-section {
+                padding-top: 18px;
+                padding-bottom: 18px;
+            }
+
+            .chapter-one-section {
+                padding-top: 22px;
+                padding-bottom: 56px;
             }
 
             .moon {
@@ -841,26 +909,25 @@
             }
 
             .strip-wrapper {
-                padding: 30px 0 46px;
+                padding: 24px 0 34px;
             }
 
             .strip-container {
-                gap: 6px;
-                padding: 0 8px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 14px;
             }
 
             .strip-card {
-                flex-basis: calc((100vw - 46px) / 6);
-                padding: 5px 5px 22px;
-                border-radius: 4px;
-                box-shadow: 0 16px 34px rgba(0, 0, 0, 0.45);
+                min-width: 120px;
+                scroll-snap-align: start;
             }
 
             .strip-caption {
-                bottom: 7px;
-                font-size: clamp(0.58rem, 2.1vw, 0.8rem);
-                left: 3px;
-                right: 3px;
+                bottom: 9px;
+                font-size: clamp(1rem, 5vw, 1.25rem);
+                left: 6px;
+                right: 6px;
             }
 
             .reason-card {
@@ -900,7 +967,7 @@
     </button>
 
     <!-- Section 1: Hero Cover Section -->
-    <section>
+    <section class="hero-section">
         <p class="script-text">for the strongest girl with kindest heart</p>
 
         <h1 class="hero-title">Minnaah</h1>
@@ -915,7 +982,7 @@
     </section>
 
     <!-- Section 2: Precise Countdown -->
-    <section>
+    <section class="countdown-section">
         <div class="section-tag">The Moment</div>
         <h2 class="countdown-title" id="countdown-heading">until your day.</h2>
 
@@ -940,8 +1007,9 @@
     </section>
 
     <!-- NEW CHAPTER 1: Starlight Memories (The 5 shared photos with custom background effects) -->
-    <section style="background: linear-gradient(to bottom, transparent, rgba(15,16,22,0.4), transparent);">
-        <h2 class="countdown-title" style="margin-bottom: 80px;">starlight memories</h2>
+    <section class="chapter-one-section"
+        style="background: linear-gradient(to bottom, transparent, rgba(15,16,22,0.4), transparent);">
+        <h2 class="countdown-title" style="margin-bottom: 56px;">starlight memories</h2>
 
         <div class="chapter-section">
             <!-- Our Photo 1 -->
@@ -950,8 +1018,8 @@
                     <img class="luxury-portrait" src="IMG_9857.jpg" alt="Our Memory 1">
                 </div>
                 <div class="portrait-details">
-                    <span class="portrait-num">01 / OUR MEMORY</span>
-                    <h3 class="portrait-caption">A golden little moment,<span>made brighter with us.</span></h3>
+                    <span class="portrait-num">01 / PHOTO NOTE</span>
+                    <h3 class="portrait-caption">A good day,<span>kept in one frame.</span></h3>
                 </div>
             </div>
 
@@ -961,8 +1029,8 @@
                     <img class="luxury-portrait" src="D6F819D4-5BEC-4C3E-B13D-2C08BD065700.jpeg" alt="Our Memory 2">
                 </div>
                 <div class="portrait-details">
-                    <span class="portrait-num">02 / OUR MEMORY</span>
-                    <h3 class="portrait-caption">Even the rainy nights,<span>felt warm beside you.</span></h3>
+                    <span class="portrait-num">02 / PHOTO NOTE</span>
+                    <h3 class="portrait-caption">A quiet night,<span>documented simply.</span></h3>
                 </div>
             </div>
 
@@ -972,8 +1040,9 @@
                     <img class="luxury-portrait" src="6397CECD-8302-488F-B034-FBB0D6776C0E.jpeg" alt="Our Memory 3">
                 </div>
                 <div class="portrait-details">
-                    <span class="portrait-num">03 / OUR MEMORY</span>
-                    <h3 class="portrait-caption">Tiny proof of us,<span>held safely in a frame.</span></h3>
+                    <span class="portrait-num">03 / PHOTO NOTE</span>
+                    <h3 class="portrait-caption">A quiet frame,<span>kept for later.</span></h3>
+
                 </div>
             </div>
 
@@ -983,8 +1052,9 @@
                     <img class="luxury-portrait" src="016B35AC-72D0-4884-B423-FDADE161ADD0.jpeg" alt="Our Memory 4">
                 </div>
                 <div class="portrait-details">
-                    <span class="portrait-num">04 / OUR MEMORY</span>
-                    <h3 class="portrait-caption">Blue skies above us,<span>and joy sitting close.</span></h3>
+                    <span class="portrait-num">04 / PHOTO NOTE</span>
+                    <h3 class="portrait-caption">A small print,<span>from a clear day.</span></h3>
+
                 </div>
             </div>
 
@@ -994,8 +1064,8 @@
                     <img class="luxury-portrait" src="IMG_4526.JPG" alt="Our Memory 5">
                 </div>
                 <div class="portrait-details">
-                    <span class="portrait-num">05 / OUR MEMORY</span>
-                    <h3 class="portrait-caption">Every little second,<span>becoming our forever.</span></h3>
+                    <span class="portrait-num">05 / PHOTO NOTE</span>
+                    <h3 class="portrait-caption">Blue sky,<span>easy smiles.</span></h3>
                 </div>
             </div>
         </div>
@@ -1021,7 +1091,6 @@
     <!-- NEW CHAPTER 3: Reference-Inspired Polaroid Memories -->
     <section class="memory-polaroid-section"
         style="background: linear-gradient(to bottom, transparent, rgba(5,5,8,0.8));">
-        <div class="section-tag">Chapter III</div>
         <h2 class="countdown-title polaroid-title" style="margin-bottom: 20px;">little frames of <span>us</span></h2>
 
         <div class="strip-wrapper">
@@ -1030,12 +1099,12 @@
                     <!-- Memory Frame 1 -->
                     <div class="strip-card">
                         <img class="strip-img" src="IMG_20260324_161732.jpg" alt="Our shared memory 1">
-                        <p class="strip-caption">us, always</p>
+                        <p class="strip-caption">frame one</p>
                     </div>
                     <!-- Memory Frame 2 -->
                     <div class="strip-card">
                         <img class="strip-img" src="IMG_3313.jpg" alt="Our shared memory 2">
-                        <p class="strip-caption">our night ride</p>
+                        <p class="strip-caption">night ride</p>
                     </div>
                     <!-- Memory Frame 3 -->
                     <div class="strip-card">
@@ -1044,21 +1113,30 @@
                     </div>
                     <!-- Memory Frame 4 -->
                     <div class="strip-card">
-                        <img class="strip-img" src="6397CECD-8302-488F-B034-FBB0D6776C0E.jpeg"
-                            alt="Our shared memory 4">
-                        <p class="strip-caption">tiny proof</p>
+                        <img class="strip-img" src="IMG_8458.JPG" alt="Our shared memory 4">
+                        <p class="strip-caption">love</p>
                     </div>
                     <!-- Memory Frame 5 -->
                     <div class="strip-card">
                         <img class="strip-img" src="IMG_9290.jpg" alt="Our shared memory 5">
-                        <p class="strip-caption">our night sky</p>
+                        <p class="strip-caption">the day</p>
                     </div>
                     <!-- Memory Frame 6 -->
                     <div class="strip-card">
-                        <img class="strip-img" src="016B35AC-72D0-4884-B423-FDADE161ADD0.jpeg"
-                            alt="Our shared memory 6">
-                        <p class="strip-caption">blue sky us</p>
+                        <img class="strip-img" src="f5c64eb6-1089-4e6f-8d38-349b6269c993.jpg" alt="Our shared memory 6">
+                        <p class="strip-caption">unexpected</p>
                     </div>
+                    <!-- Memory Frame 7 -->
+                    <div class="strip-card">
+                        <img class="strip-img" src="IMG_8455.JPG" alt="Our shared memory 7">
+                        <p class="strip-caption">snap</p>
+                    </div>
+                    <!-- Memory Frame 8 -->
+                    <div class="strip-card">
+                        <img class="strip-img" src="IMG_9222.jpg" alt="Our shared memory 8">
+                        <p class="strip-caption">street lights</p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -1071,7 +1149,7 @@
 
 
         <div class="section-tag">Always</div>
-        <h2 class="reasons-title">reasons i love <span>you</span></h2>
+        <h2 class="reasons-title">Thank you for beeing <span>you</span></h2>
         <div class="reasons-grid">
 
             <div class="reason-card"
@@ -1115,33 +1193,58 @@
             <h3 class="letter-header">Dear Minnaah,</h3>
 
             <div class="letter-body">
-                <p>Happy Birthday!</p>
+
 
                 <p>
-                    Today is all about celebrating you and the wonderful person you are.
-                    Thank you for being such an amazing friend, a great listener, and someone
-                    who always knows how to encourage others. You've taught me many valuable
-                    things, and I truly appreciate every conversation, every laugh, and every
-                    memory we've shared.
+                    Today is a celebration of someone who means so much to me. Thank you for being an amazing friend, a
+                    wonderful listener, and someone who has always been there whenever I needed support.
                 </p>
 
                 <p>
-                    I hope this new year of your life brings you happiness, good health,
-                    exciting opportunities, and countless reasons to smile. May every goal
-                    you dream of become a reality, and may you always stay as kind, caring,
-                    and inspiring as you are today.
+                    You've helped me through some of my difficult days, encouraged me when I felt low, and guided me
+                    whenever I was confused about making decisions. Your advice has always come from a place of care,
+                    and I'm truly grateful for that.
                 </p>
 
                 <p>
-                    Never stop believing in yourself, because you have so much potential.
-                    Keep shining, keep smiling, and keep being the wonderful person everyone
-                    is lucky to know.
+                    One thing I've always admired about you is your strength. No matter what life throws at you, you
+                    face it with courage. You remind me that even the hardest situations can be handled with patience,
+                    confidence, and hope.
                 </p>
 
                 <p>
-                    Wishing you a birthday filled with love, laughter, unforgettable moments,
-                    and everything that makes you truly happy.
+                    Thank you for all our late-night talks, the endless laughter, the random conversations, and even our
+                    little <em>thettals</em>. Somehow, after every misunderstanding, we always found our way back to
+                    talking, and I think that's what makes our friendship so special.
                 </p>
+
+                <p>
+                    You're one of the most caring people I've ever known. Thank you for caring for me the way you do. I
+                    hope I've been able to do the same for you, because your happiness truly matters to me.
+                </p>
+
+                <p>
+                    Your motivational words have pushed me forward more times than you probably realize. You have a way
+                    of making people believe in themselves, and that's a rare gift.
+                </p>
+
+                <p>
+                    As you begin another beautiful year, I hope every dream you have finds its way to you. May you
+                    always have good health, genuine happiness, endless success, peace of mind, and people who love and
+                    appreciate you just as much as you deserve.
+                </p>
+
+                <p>
+                    Never stop being the kind, strong, caring, and beautiful person you are. The world is brighter
+                    because you're in it.
+                </p>
+
+                <p>
+                    Happy Birthday once again, Minnaah. Thank you for every memory we've shared, and here's to creating
+                    many more together. ❤️
+                </p>
+
+
             </div>
 
             <div class="letter-footer">
@@ -1256,6 +1359,13 @@
         }
 
         const birthdayNotes = {
+            C3: 130.81,
+            D3: 146.83,
+            E3: 164.81,
+            F3: 174.61,
+            G3: 196.00,
+            A3: 220.00,
+            B3: 246.94,
             C4: 261.63,
             D4: 293.66,
             E4: 329.63,
@@ -1281,14 +1391,41 @@
             ['REST', 1.2]
         ];
 
+        const birthdayChordMap = {
+            0: ['C4', 'E4', 'G4'],
+            3: ['G3', 'D4', 'G4'],
+            7: ['C4', 'E4', 'G4'],
+            10: ['G3', 'D4', 'G4'],
+            14: ['C4', 'E4', 'G4'],
+            17: ['F3', 'C4', 'F4'],
+            20: ['G3', 'D4', 'G4'],
+            23: ['F3', 'C4', 'F4'],
+            26: ['G3', 'D4', 'G4']
+        };
+
         let birthdayAudioContext;
         let birthdayMasterGain;
+        let birthdayWarmFilter;
+        let birthdayDelay;
+        let birthdayDelayFeedback;
         let birthdayPlaying = false;
         let birthdayNoteIndex = 0;
         let birthdayTimers = [];
         let activeBirthdayOscillators = [];
 
-        function playSoftBirthdayNote(noteName, seconds) {
+        function connectBirthdaySound(node) {
+            if (birthdayWarmFilter) {
+                node.connect(birthdayWarmFilter);
+            } else {
+                node.connect(birthdayMasterGain);
+            }
+
+            if (birthdayDelay) {
+                node.connect(birthdayDelay);
+            }
+        }
+
+        function playBirthdayTone(noteName, seconds, type, peakGain, attack, releasePoint, detune = 0, multiplier = 1) {
             if (!birthdayAudioContext || !birthdayMasterGain || noteName === 'REST') {
                 return;
             }
@@ -1302,14 +1439,15 @@
             const oscillator = birthdayAudioContext.createOscillator();
             const noteGain = birthdayAudioContext.createGain();
 
-            oscillator.type = 'sine';
-            oscillator.frequency.setValueAtTime(frequency, now);
+            oscillator.type = type;
+            oscillator.frequency.setValueAtTime(frequency * multiplier, now);
+            oscillator.detune.setValueAtTime(detune, now);
             noteGain.gain.setValueAtTime(0.0001, now);
-            noteGain.gain.exponentialRampToValueAtTime(0.36, now + 0.04);
-            noteGain.gain.exponentialRampToValueAtTime(0.0001, now + Math.max(0.08, seconds * 0.92));
+            noteGain.gain.exponentialRampToValueAtTime(peakGain, now + attack);
+            noteGain.gain.exponentialRampToValueAtTime(0.0001, now + Math.max(0.08, seconds * releasePoint));
 
             oscillator.connect(noteGain);
-            noteGain.connect(birthdayMasterGain);
+            connectBirthdaySound(noteGain);
             oscillator.start(now);
             oscillator.stop(now + seconds);
 
@@ -1319,6 +1457,17 @@
             };
         }
 
+        function playSoftBirthdayNote(noteName, seconds) {
+            playBirthdayTone(noteName, seconds, 'triangle', 0.2, 0.035, 0.92);
+            playBirthdayTone(noteName, seconds * 0.75, 'sine', 0.055, 0.015, 0.72, 6, 2);
+        }
+
+        function playSoftBirthdayChord(noteNames, seconds) {
+            noteNames.forEach((noteName, index) => {
+                playBirthdayTone(noteName, seconds, 'sine', 0.035, 0.12 + index * 0.025, 0.96, index * 3);
+            });
+        }
+
         function scheduleBirthdayMelody() {
             if (!birthdayPlaying) {
                 return;
@@ -1326,6 +1475,11 @@
 
             const beatMs = 520;
             const [noteName, beats] = birthdayMelody[birthdayNoteIndex];
+
+            if (birthdayChordMap[birthdayNoteIndex]) {
+                playSoftBirthdayChord(birthdayChordMap[birthdayNoteIndex], 2.4);
+            }
+
             playSoftBirthdayNote(noteName, (beatMs * beats) / 1000);
 
             birthdayNoteIndex = (birthdayNoteIndex + 1) % birthdayMelody.length;
@@ -1345,7 +1499,20 @@
             if (!birthdayAudioContext) {
                 birthdayAudioContext = new AudioContextClass();
                 birthdayMasterGain = birthdayAudioContext.createGain();
-                birthdayMasterGain.gain.value = 0.055;
+                birthdayWarmFilter = birthdayAudioContext.createBiquadFilter();
+                birthdayDelay = birthdayAudioContext.createDelay();
+                birthdayDelayFeedback = birthdayAudioContext.createGain();
+
+                birthdayMasterGain.gain.value = 0.07;
+                birthdayWarmFilter.type = 'lowpass';
+                birthdayWarmFilter.frequency.value = 2800;
+                birthdayDelay.delayTime.value = 0.24;
+                birthdayDelayFeedback.gain.value = 0.16;
+
+                birthdayDelay.connect(birthdayDelayFeedback);
+                birthdayDelayFeedback.connect(birthdayDelay);
+                birthdayDelay.connect(birthdayWarmFilter);
+                birthdayWarmFilter.connect(birthdayMasterGain);
                 birthdayMasterGain.connect(birthdayAudioContext.destination);
             }
 
